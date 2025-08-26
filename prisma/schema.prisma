@@ -1,0 +1,28 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  // Removemos el output personalizado para usar la ubicación estándar
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Dedication {
+  id            Int      @id @default(autoincrement())
+  message       String
+  author        String
+  song_id       String? // ID de Spotify
+  song_name     String?
+  artist        String?
+  preview_url   String? // URL del preview de 30s
+  image_cancion String?
+  image         String?
+  createdAt     DateTime @default(now()) @map("created_at")
+  updatedAt     DateTime @updatedAt @map("updated_at")
+
+  @@map("dedications")
+}
