@@ -3,6 +3,7 @@ import { ConfigModule } from '@nestjs/config';
 //modulos
 import { DedicationsModule } from './dedications/dedications.module';
 import { DeezerModule } from './deezer/deezer.module';
+import { PexelsModule } from './pexels/pexels.module';
 
 @Module({
   imports: [
@@ -11,6 +12,7 @@ import { DeezerModule } from './deezer/deezer.module';
     }),
     DedicationsModule,
     DeezerModule,
+    PexelsModule,
   ],
   controllers: [],
   providers: [],
