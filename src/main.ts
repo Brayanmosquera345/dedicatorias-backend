@@ -15,7 +15,7 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('docs', app, document);
   app.enableCors({
-    origin: ['https://dedicatorias-six.vercel.app/'], // orígenes permitidos
+    origin: ['https://dedicatorias-six.vercel.app'], // orígenes permitidos
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true, // si necesitas enviar cookies/autenticación
   });
