@@ -7,5 +7,6 @@ import { HttpModule } from '@nestjs/axios';
   imports: [HttpModule],
   controllers: [DeezerController],
   providers: [DeezerService],
+  exports: [DeezerService],
 })
 export class DeezerModule {}

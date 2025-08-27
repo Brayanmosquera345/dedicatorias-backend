@@ -5,6 +5,7 @@ import { ConfigService } from '@nestjs/config';
 import { songAdapter } from './adapters/songAdapter';
 import type { SongDeezer, Song } from './types/Song';
 import { ResponseSongDto } from './dto/response-song.dto';
+import { AxiosResponse } from 'axios';
 
 @Injectable()
 export class DeezerService {
@@ -36,5 +37,13 @@ export class DeezerService {
       console.error(error);
       throw new Error('Error al buscar canciones');
     }
+  }
+
+  async getSongPreview(id: string): Promise<string> {
+    const response: AxiosResponse<SongDeezer> = await firstValueFrom(
+      this.httpService.get<SongDeezer>(`${this.baseUrl}/track/${id}`),
+    );
+    const preview = response.data.preview ?? '';
+    return preview;
   }
 }
